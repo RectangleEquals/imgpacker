@@ -1,0 +1,22 @@
+{
+  "name": "imgpacker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "imgpacker.js",
+  "scripts": {
+    "build": "nexe"
+  },
+  "author": "RectangleEquals",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "image-type": "^4.1.0",
+    "is-svg": "^4.2.1",
+    "photo-collage": "git+https://github.com/RectangleEquals/photo-collage.git",
+    "read-chunk": "^3.2.0",
+    "sharp": "^0.25.2"
+  },
+  "devDependencies": {
+    "nexe": "^3.3.2"
+  }
+}
