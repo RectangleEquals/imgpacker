@@ -5,6 +5,7 @@ const imageType = require('image-type');
 const isSvg = require('is-svg');
 const sharp = require('sharp');
 const createCollage = require("photo-collage");
+const { VERSION } = require('./package.json')
 
 const MIN_ARG_COUNT = 3;
 const MIN_COLUMNS = 1;
@@ -75,7 +76,7 @@ fs.readdir(IN_PATH, function(err, files)
 });
 
 function showUsage() {
-    console.info('Image Packer v0.1a');
+    console.info('Image Packer v' + VERSION);
     console.info('Authored by: Michael Wion (https://github.com/RectangleEquals)');
     console.info('Usage: imgpacker [Options] <CellSize> <Columns> <OutputFile> [InputFolder]');
     console.info('');
