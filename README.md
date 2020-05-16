@@ -24,7 +24,7 @@ This project has the following dev dependencies:
 
 - Install the above [dependencies](https://github.com/RectangleEquals/imgpacker#build-dependencies). This should be easily done by executing `npm install` from within the project's root folder.
 - __Windows__: Execute `npm run build` from within the project's root folder. This should create a binary executable within the same folder.
-- __MacOS/Linux__: I haven't looked into it, but _maybe_ __`nexe`__ has support for building binaries for this environment? Otherwise, you should be able to run the app via `npm run imgpacker.js [args]`.
+- __MacOS/Linux__: I'm not sure if [nexe](https://github.com/nexe/nexe#readme) can build binaries for you, but you should be able to run the app via `npm run imgpacker.js [args]`. There are also other solutions, such as [pkg](https://github.com/zeit/pkg).
 
 ## Usage
 
