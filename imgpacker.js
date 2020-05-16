@@ -99,8 +99,23 @@ for(var i = 0; i < args.length - 4; i++)
             { appOptions.flop = true; continue; }
 
         // Flatten
-        if(strOption === 'fl' || strOption === 'flatten')
-            { appOptions.flatten = true; continue; }
+        if(strOption.startsWith('fl') || strOption.startsWith('flatten'))
+        {
+            appOptions.flatten = true;
+            if(strOption.includes('#')) {
+                let index = strOption.indexOf('#');
+                let strColor = strOption.substring(index);
+                if(strColor && strColor.length > 0) {
+                    if(strColor.length != 7) {
+                        console.warn(AES_YELLOW + 'Invalid flatten background color: ' + AES_RESET + strColor
+                            + AES_YELLOW + '... Defaulting to #000000' + AES_RESET);
+                        continue;
+                    }
+                    appOptions.flattenColor = strColor;
+                }
+            }
+            continue;
+        }
 
         console.warn(AES_YELLOW + 'Invalid option: ' + AES_RESET + strOption);
     } else {
@@ -144,8 +159,8 @@ function showUsage() {
     console.info(AES_DKGREEN + 'Authored by: Michael Wion (https://github.com/RectangleEquals)' + AES_RESET);
     console.info(AES_BOLD + AES_WHITE + 'Usage: imgpacker [Options] <CellSize> <Columns> <OutputFile> [InputFolder]');
     console.info(AES_RESET);
-    console.info(AES_WHITE + 'Example: imgpacker --sharpenAfter 32 10 "C:\\OutputImage.png" "C:\\Images"');
-    console.info(AES_RESET + '\tCopies all images found in "C:\\Images", resizes them to 32x32px, sharpens them, tiles them into 10 max columns, and saves the result to "C:\\OutputImage.png"');
+    console.info(AES_WHITE + 'Example: imgpacker -sa -fl#ff00ff 32 10 "C:\\OutputImage.png" "C:\\Images"');
+    console.info(AES_RESET + '\tCopies all images found in "C:\\Images", flattens them with a magenta background, resizes them to 32x32px, sharpens them, tiles them into 10 max columns, and saves the result to "C:\\OutputImage.png"');
     console.info(AES_WHITE);
     console.info('Options:');
     console.info('\t-ba, --blurAfter\t\tBlurs input images AFTER resizing.');
@@ -156,7 +171,7 @@ function showUsage() {
     console.info('\t-mb, --medianBefore\t\tApplies a median filter to input images BEFORE resizing.');
     console.info('\t-fy, --flip\t\t\tFlip the image about the vertical Y axis.');
     console.info('\t-fx, --flop\t\t\tFlop the image about the horizontal X axis.');
-    console.info('\t-fl, --flatten\t\t\tMerge alpha transparency channel, if any, with a background.');
+    console.info('\t-fl, --flatten<#RRGGBB>\t\tMerge alpha transparency channel, if any, with a background color (specified in hex). Default color is #000000.');
     console.info(AES_RESET);
     process.exit(0);
 }
@@ -223,8 +238,12 @@ function processImages(imagePaths)
             ////////////////////////
 
             // Flatten
-            if(appOptions.flatten)
-                pngImage = pngImage.flatten();
+            if(appOptions.flatten) {
+                if(appOptions.flattenColor)
+                    pngImage = pngImage.flatten({background: appOptions.flattenColor});
+                else
+                    pngImage = pngImage.flatten();
+            }
 
             // Blur
             if(appOptions.blurBefore)

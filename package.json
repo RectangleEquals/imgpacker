@@ -1,6 +1,6 @@
 {
   "name": "imgpacker",
-  "version": "0.0.1b",
+  "version": "0.1.0",
   "description": "",
   "main": "imgpacker.js",
   "scripts": {
