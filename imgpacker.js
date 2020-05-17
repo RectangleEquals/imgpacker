@@ -171,7 +171,7 @@ function showUsage() {
     console.info('\t-mb, --medianBefore\t\tApplies a median filter to input images BEFORE resizing.');
     console.info('\t-fy, --flip\t\t\tFlip the image about the vertical Y axis.');
     console.info('\t-fx, --flop\t\t\tFlop the image about the horizontal X axis.');
-    console.info('\t-fl, --flatten<#RRGGBB>\t\tMerge alpha transparency channel, if any, with a background color (specified in hex). Default color is #000000.');
+    console.info('\t-fl, --flatten[#RRGGBB]\t\tMerge alpha transparency channel, if any, with a background color (specified in hex). Default color is #000000.');
     console.info(AES_RESET);
     process.exit(0);
 }
