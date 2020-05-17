@@ -4,7 +4,7 @@ A multipurpose command-line image processing and tiling utility.
 
 ## Download
 
-### Latest [Windows Executable](https://github.com/RectangleEquals/imgpacker/files/4639917/imgpacker.zip) (x86/x64)
+### Latest [Windows Executable](https://github.com/RectangleEquals/imgpacker/releases/download/1.0.0/imgpacker_win.zip) (x86/x64)
 
 ## Usage
 
