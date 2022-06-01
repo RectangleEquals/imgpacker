@@ -14,7 +14,7 @@
     "is-svg": "^4.2.1",
     "photo-collage": "git+https://github.com/RectangleEquals/photo-collage.git",
     "read-chunk": "^3.2.0",
-    "sharp": "^0.25.2"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "nexe": "^3.3.2"
